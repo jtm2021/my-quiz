@@ -5,37 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>My Quiz</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <title>Eu Capitals Quiz</title>
 </head>
 <body>
-    <header>
-        <a href="index.html">
-            <h1 id="logo">EU Capitals Quiz</h1>
-        </a>
-        <nav>
-            <ul id="menu">
-                <li>
-                    <a href="#">High Scores</a>
-                </li>
-                <li>
-                    <a href="#">Guide</a>
-                </li>
-                <li>
-                    <a href="index.html">Home</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    <div class="welcomepage">
+        <p>Let's <br> play!</p>
+        <button class="start-btn">Start</button>
+    </div>
+    
     <div class="game-area">
-        <div id="question-box">
+        <div class="question-box">
             <div class="question">Question?</div>
-            <div class="answer-buttons" class="buttons-box">
-                <button class="button">1st Answer</button>
-                <button class="button">2nd Answer</button>
-                <button class="button">3rd Answer</button>
-                <button class="button">4th Answer</button>
+            <div class="answer-buttons">
+                <button class="btn">1st Answer</button>
+                <button class="btn">2nd Answer</button>
+                <button class="btn">3rd Answer</button>
+                <button class="btn">4th Answer</button>
             </div>
-            <button data-type="submit" class="button--gray">Submit Answer</button>            
+            <div class="next-btn"><button class="btn_next">Next</button></div>
         </div>
     </div>
     <div class="score-area">

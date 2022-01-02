@@ -1,0 +1,70 @@
+body {
+    padding: 0;
+    margin: 0; 
+    background: lightgreen;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-area {
+    height: 50vh;
+    width: 70vw;
+    background: white;
+    border-radius: 6px;
+    padding: 10px;
+    box-shadow: 0 0 15px 5px;
+    display: none;
+}
+
+.score-area {
+    width: 20vw;
+    color: black;
+    position: absolute;
+    bottom: 0;
+    left: 40%;
+}
+
+.welcomepage {
+    height: 50vh;
+    width: 70vw;
+    background: white;
+    border-radius: 6px;
+    padding: 10px;
+    box-shadow: 0 0 15px 5px;
+    text-align: center;
+}
+
+.welcomepage p {
+    font-size: 50px;
+}
+
+.welcomepage button {
+    padding: 10px;
+    font-size: 30px;
+    margin: 25px;
+}
+
+
+
+
+
+
+
+
+
+
+.answer_button {
+    width: 20%;
+    background: rgb(220, 220, 240);
+    padding: 15px;
+}
+
+.answer_button.valid {
+    border: 5px solid rgb(39, 228, 14);
+}
+
+.answer_button.invalid {
+    border: 5px solid rgb(rgb(240, 7, 7);
+}
