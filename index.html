@@ -6,29 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-    <title>Eu Capitals Quiz</title>
+    <title>EU Capitals Quiz</title>
 </head>
 <body>
-    <div class="welcomepage">
+    <div id="welcomepage">
         <p>Let's <br> play!</p>
-        <button class="start-btn">Start</button>
+        <button id="start-btn">Start</button>
     </div>
-    
-    <div class="game-area">
-        <div class="question-box">
-            <div class="question">Question?</div>
-            <div class="answer-buttons">
+    <div id="game-area">
+        <div id="question-box">
+            <p id="question">Question?</p>
+            <div id="answers">
                 <button class="btn">1st Answer</button>
                 <button class="btn">2nd Answer</button>
                 <button class="btn">3rd Answer</button>
                 <button class="btn">4th Answer</button>
             </div>
-            <div class="next-btn"><button class="btn_next">Next</button></div>
+            <div class="button"><button class="btn_next">Next</button></div>
         </div>
     </div>
-    <div class="score-area">
+    <div id="score-area">
         <p class="scores">Correct Answers <span id="correct">0</span></p>
-        <p class="scores">Wrong Answers <span id="wrong">0</span></p>
+        <p class="scores">Wrong Answers <span id="incorrect">0</span></p>
     </div>
     <script src="assets/js/script.js"></script>
 </body>
