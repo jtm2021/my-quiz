@@ -82,7 +82,7 @@ body {
     padding: 10px;
     border-radius: 5px;
     position: absolute;
-    top: 65%;
+    top: 67%;
 }
 
 #answers {
@@ -93,16 +93,16 @@ body {
     height: 100%;
 }
 
-#answers_button {
+#answers__button {
     width: 40%;
     padding: 15px;
     background: rgb(90, 85, 85);
 }
 
-#answers_button.valid {
+#answers__button.valid {
     border: 5px solid rgb(5, 228, 35);
 }
 
-#answers_button.invalid {
+#answers__button.invalid {
     border: 5px solid rgb(240, 8, 8);
 } 
