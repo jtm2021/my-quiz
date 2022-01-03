@@ -1,57 +1,17 @@
 const welcomePage = document.getElementById('welcomepage')
-const startButton = document.getElementById('start-btn')
 const gameArea = document.getElementById('game-area')
+const startButton = document.getElementById('start-btn')
 const questionBox = document.getElementById('question-box')
 const questionElement = document.getElementById('question')
 const answerElement = document.getElementById('answers')
-const answers = document.querySelectorAll('answer')
-const buttonNext = document.querySelector('.btn_next')
-const scoreSpan = document.getElementById('correct')
+const nextButton = document.getElementById('next-btn')
 
 let shuffledQuestions, currentQuestionIndex
 
-const questions = [
-    {question: 'What is the capital of Albania?',
-        answers: [{text:'Tirana', isAnswer:true},{text:'London', isAnswer:false},{text:'Dublin', isAnswer:false},{text:'Baku', isAnswer:false}]
-    },
-    {question: 'What is the capital of Andorra?',
-        answers: [{text:'Yereven', isAnswer:false},{text:'Tallin', isAnswer:false},{text:'Minsk', isAnswer:false},{text:'Andorra la Vella', isAnswer:true}]
-    },
-    {question: 'What is the capital of Estonia?',
-        answers: [{text:'Sarajevo', isAnswer:false},{text:'Pristina', isAnswer:false},{text:'Tallin', isAnswer:true},{text:'Tbilisi', isAnswer:false}]
-    },
-    {question: 'What is the capital of Latvia?',
-        answers: [{text:'Riga', isAnswer:true},{text:'Oslo', isAnswer:false},{text:'Ankara', isAnswer:false},{text:'Belgrade', isAnswer:false}]
-    },
-    {question: 'What is the capital of Azerbaijan?',
-        answers: [{text:'Baku', isAnswer:true},{text:'Brusells', isAnswer:false},{text:'Vilnius', isAnswer:false},{text:'Rome', isAnswer:false}]
-    },
-    {question: 'What is the capital of Belarus?',
-        answers: [{text:'Budapest', isAnswer:false},{text:'Minsk', isAnswer:true},{text:'Helsinki', isAnswer:false},{text:'Paris', isAnswer:false}]
-    },
-    {question: 'What is the capital of Germany?',
-        answers: [{text:'Valletta', isAnswer:false},{text:'Pristina', isAnswer:false},{text:'Berlin', isAnswer:true},{text:'Athens', isAnswer:false}]
-    },
-    {question: 'What is the capital of Italy?',
-        answers: [{text:'Rome', isAnswer:true},{text:'Chisinau', isAnswer:false},{text:'Podgorica', isAnswer:false},{text:'Monaco', isAnswer:false}]
-    },
-    {question: 'What is the capital of Luxembourg?',
-        answers: [{text:'Tirana', isAnswer:false},{text:'London', isAnswer:false},{text:'Dublin', isAnswer:false},{text:'Luxembourg', isAnswer:true}]
-    },
-    {question: 'What is the capital of Malta?',
-        answers: [{text:'Sarajevo', isAnswer:false},{text:'Prague', isAnswer:false},{text:'Vaduz', isAnswer:false},{text:'Valletta', isAnswer:true}]
-    },
-    {question: 'What is the capital of Slovenia?',
-        answers: [{text:'Stockholm', isAnswer:false},{text:'Bern', isAnswer:false},{text:'Ljubljana', isAnswer:true},{text:'Vatican', isAnswer:false}]
-    },
-    {question: 'What is the capital of Slovakia?',
-        answers: [{text:'Bratislava', isAnswer:true},{text:'Ankara', isAnswer:false},{text:'Kyiv', isAnswer:false},{text:'San Marino', isAnswer:false}]
-    }
-]
 startButton.addEventListener('click', startGame)
-buttonNext.addEventListener('click', () => {
+nextButton.addEventListener('click', () => {
     currentQuestionIndex++
-    setNextQuestion()
+    launchNextQuestion()
 })
 
 function startGame () {
@@ -63,6 +23,7 @@ function startGame () {
 }
 
 function launchNextQuestion() {
+    resetState()
     showQuestion(shuffledQuestions[currentQuestionIndex])
 }
 
@@ -72,31 +33,31 @@ function showQuestion(question) {
         const button = document.createElement('button')
         button.innerText = answer.text
         button.classList.add('btn')
-        if (answer.isAnswer) {
-            button.dataset.isAnswer = answer.isAnswer
+        if (answer.correct) {
+            button.dataset.correct = answer.correct
         }
-        button.addEventListener('click', selectAnswer)
+        button.addEventListener('click', checkAnswer)
         answerElement.appendChild(button)
     })
 }
 
 function resetState() {
     clearStatusClass(document.body)
-    buttonNext.classList.add('hide')
+    nextButton.classList.add('hide')
     while (answerElement.firstChild) {
         answerElement.removeChild(answerElement.firstChild)
     }
 }
 
-function checkAnswer() {
+function checkAnswer(e) {
     const selectedButton = e.target
-    const isAnswer = selectedButton.dataset.isAnswer
-    setStatusClass(document.body, isAnswer)
+    const correct = selectedButton.dataset.correct
+    setStatusClass(document.body, correct)
     Array.from(answerElement.children).forEach(button => {
-        setStatusClass(button, button.dataset.isAnswer)
+        setStatusClass(button, button.dataset.correct)
     })
     if (shuffledQuestions.length > currentQuestionIndex + 1) {
-        buttonNext.classList.remove('hide')
+        nextButton.classList.remove('hide')
     } else {
         startButton.innerText = 'Restart'
         startButton.classList.remove('hide')
@@ -104,9 +65,9 @@ function checkAnswer() {
     
 }
 
-function setStatusClass(element, isAnswer) {
+function setStatusClass(element, correct) {
     clearStatusClass(element)
-    if (isAnswer) {
+    if (correct) {
         element.classList.add('correct')
     } else {
         element.classList.add('wrong')
@@ -117,3 +78,42 @@ function clearStatusClass(element) {
     element.classList.remove('correct')
     element.classList.remove('wrong')
 }
+
+const questions = [
+    {question: 'What is the capital of Albania?',
+        answers: [{text:'Tirana', correct:true},{text:'London', correct:false},{text:'Dublin', correct:false},{text:'Baku', correct:false}]
+    },
+    {question: 'What is the capital of Andorra?',
+        answers: [{text:'Yereven', correct:false},{text:'Tallin', correct:false},{text:'Minsk', correct:false},{text:'Andorra la Vella', correct:true}]
+    },
+    {question: 'What is the capital of Estonia?',
+        answers: [{text:'Sarajevo', correct:false},{text:'Pristina', correct:false},{text:'Tallin', correct:true},{text:'Tbilisi', correct:false}]
+    },
+    {question: 'What is the capital of Latvia?',
+        answers: [{text:'Riga', correct:true},{text:'Oslo', correct:false},{text:'Ankara', correct:false},{text:'Belgrade', correct:false}]
+    },
+    {question: 'What is the capital of Azerbaijan?',
+        answers: [{text:'Baku', correct:true},{text:'Brusells', correct:false},{text:'Vilnius', correct:false},{text:'Rome', correct:false}]
+    },
+    {question: 'What is the capital of Belarus?',
+        answers: [{text:'Budapest', correct:false},{text:'Minsk', correct:true},{text:'Helsinki', correct:false},{text:'Paris', correct:false}]
+    },
+    {question: 'What is the capital of Germany?',
+        answers: [{text:'Valletta', correct:false},{text:'Pristina', correct:false},{text:'Berlin', correct:true},{text:'Athens', correct:false}]
+    },
+    {question: 'What is the capital of Italy?',
+        answers: [{text:'Rome', correct:true},{text:'Chisinau', correct:false},{text:'Podgorica', correct:false},{text:'Monaco', correct:false}]
+    },
+    {question: 'What is the capital of Luxembourg?',
+        answers: [{text:'Tirana', correct:false},{text:'London', correct:false},{text:'Dublin', correct:false},{text:'Luxembourg', correct:true}]
+    },
+    {question: 'What is the capital of Malta?',
+        answers: [{text:'Sarajevo', correct:false},{text:'Prague', correct:false},{text:'Vaduz', correct:false},{text:'Valletta', correct:true}]
+    },
+    {question: 'What is the capital of Slovenia?',
+        answers: [{text:'Stockholm', correct:false},{text:'Bern', correct:false},{text:'Ljubljana', correct:true},{text:'Vatican', correct:false}]
+    },
+    {question: 'What is the capital of Slovakia?',
+        answers: [{text:'Bratislava', correct:true},{text:'Ankara', correct:false},{text:'Kyiv', correct:false},{text:'San Marino', correct:false}]
+    }
+]

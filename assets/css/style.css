@@ -8,25 +8,6 @@ body {
     align-items: center;
 }
 
-#game-area {
-    height: 50vh;
-    width: 70vw;
-    background: white;
-    border-radius: 6px;
-    padding: 10px;
-    box-shadow: 0 0 15px 5px;
-    text-align: center;
-    display: none;
-}
-
-#score-area {
-    width: 20vw;
-    color: black;
-    position: absolute;
-    bottom: 0;
-    left: 40%;
-}
-
 #welcomepage {
     height: 50vh;
     width: 70vw;
@@ -49,60 +30,47 @@ body {
     border-radius: 5px;
 }
 
-#questions-box {
-    height: 100%;
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: 25% 75%;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-#questions-box p {
-    height: 100%;
+#game-area {
+    height: 50vh;
+    width: 70vw;
     background: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    border-radius: 6px;
+    padding: 10px;
+    box-shadow: 0 0 15px 5px;
+    text-align: center;
+    display: none;
 }
 
-.button {
-    padding: 10px;
-    font-size: 25px;
-    height: 80%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.btn-grid {
+    display: grid;
+    margin: 30px 0;
+    gap: 15px;
 }
 
-.button button {
-    width: 50%;
-    font-size: 25px;
-    padding: 10px;
-    border-radius: 5px;
+.btn {
+    border: 2px solid black;
+    border-radius: 6px;
+    padding: 6px 10px;
+    color: black;
+}
+
+.btn:hover {
+    border-color: black;
+}
+
+.btn.correct {
+    color: chartreuse;
+}
+
+.btn.wrong {
+    color: crimson;
+}
+
+#score-area {
+    width: 20vw;
+    color: black;
     position: absolute;
-    top: 67%;
+    bottom: 0;
+    left: 40%;
 }
 
-#answers {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100%;
-}
-
-#answers__button {
-    width: 40%;
-    padding: 15px;
-    background: rgb(90, 85, 85);
-}
-
-#answers__button.valid {
-    border: 5px solid rgb(5, 228, 35);
-}
-
-#answers__button.invalid {
-    border: 5px solid rgb(240, 8, 8);
-} 
