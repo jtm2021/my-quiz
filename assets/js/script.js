@@ -5,16 +5,20 @@ const questionBox = document.getElementById('question-box')
 const questionElement = document.getElementById('question')
 const answerElement = document.getElementById('answers')
 const nextButton = document.getElementById('next-btn')
+const resetButton = document.getElementById('reset-btn')
 
 let shuffledQuestions, currentQuestionIndex
 
 startButton.addEventListener('click', startGame)
+resetButton.addEventListener('click', startGame)
 nextButton.addEventListener('click', () => {
     currentQuestionIndex++
     launchNextQuestion()
 })
 
 function startGame () {
+    resetButton.classList.remove('show')
+    nextButton.classList.remove('hidebtn')
     welcomePage.style.display = 'none'
     gameArea.style.display = 'grid'
     shuffledQuestions = questions.sort(() => Math.random() - .5)
@@ -24,7 +28,13 @@ function startGame () {
 
 function launchNextQuestion() {
     resetState()
-    showQuestion(shuffledQuestions[currentQuestionIndex])
+    if (currentQuestionIndex === questions.length) {
+        resetButton.classList.add('show')
+        nextButton.classList.add('hidebtn')
+        questionElement.innerText = "Quiz done!"
+    } else {
+        showQuestion(shuffledQuestions[currentQuestionIndex])
+    }
 }
 
 function showQuestion(question) {

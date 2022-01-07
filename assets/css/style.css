@@ -74,3 +74,19 @@ body {
     left: 40%;
 }
 
+.reset-btn {
+    display: none;
+}
+
+.show {
+    display: block !important;
+}
+
+.hidebtn {
+    display: none !important;
+}
+
+.btn-wrapper {
+    display: flex;
+    justify-content: center;
+}
